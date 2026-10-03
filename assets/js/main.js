@@ -1,6 +1,6 @@
 /* ---- EDIT THESE: your real contact details ---- */
 const CONTACT = {
-  email: "",   // e.g. "info@yourdomain.com"
+  email: "darshandyechemAd@gmail.com",   // used by the enquiry form when no WhatsApp number is set
   phone: "919327094416"    // international format, digits only
 };
 
@@ -12,11 +12,6 @@ const mb = $("#menuBtn"), menu = $("#menu");
 if (mb) {
   mb.addEventListener("click", () => { const o = menu.classList.toggle("open"); mb.setAttribute("aria-expanded", o); });
 }
-
-/* contact links */
-const showPhone = p => p.replace(/^(\d{2})(\d{5})(\d{5})$/, "+$1 $2 $3");
-$$("[data-phone]").forEach(a => { if (CONTACT.phone) { a.textContent = showPhone(CONTACT.phone); a.href = "tel:+" + CONTACT.phone; } });
-$$("[data-mail]").forEach(a => { if (CONTACT.email) { a.textContent = CONTACT.email; a.href = "mailto:" + CONTACT.email; } });
 
 /* reveal on scroll */
 const io = "IntersectionObserver" in window
