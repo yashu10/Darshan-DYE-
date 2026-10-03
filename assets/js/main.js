@@ -1,7 +1,7 @@
 /* ---- EDIT THESE: your real contact details ---- */
 const CONTACT = {
   email: "",   // e.g. "info@yourdomain.com"
-  phone: ""    // international format, digits only, e.g. "919XXXXXXXXX"
+  phone: "919327094416"    // international format, digits only
 };
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -14,7 +14,8 @@ if (mb) {
 }
 
 /* contact links */
-$$("[data-phone]").forEach(a => { if (CONTACT.phone) { a.textContent = "+" + CONTACT.phone; a.href = "https://wa.me/" + CONTACT.phone; } });
+const showPhone = p => p.replace(/^(\d{2})(\d{5})(\d{5})$/, "+$1 $2 $3");
+$$("[data-phone]").forEach(a => { if (CONTACT.phone) { a.textContent = showPhone(CONTACT.phone); a.href = "tel:+" + CONTACT.phone; } });
 $$("[data-mail]").forEach(a => { if (CONTACT.email) { a.textContent = CONTACT.email; a.href = "mailto:" + CONTACT.email; } });
 
 /* reveal on scroll */
