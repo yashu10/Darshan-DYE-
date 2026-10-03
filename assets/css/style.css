@@ -487,3 +487,13 @@ dialog.ex-dlg::backdrop{background:rgba(5,5,9,.75)}
 .hs{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transform:scale(1.04);transition:opacity 1.2s ease,transform 7s ease-out}
 .hs.on{opacity:1;transform:scale(1.12)}
 @media (prefers-reduced-motion:reduce){.hs,.hs.on{transition:none;transform:none}}
+
+/* contact lists with icons */
+.cl{list-style:none;display:grid;gap:2px;margin:0;padding:0}
+.cl a{display:inline-flex;align-items:center;gap:10px;min-height:36px;word-break:break-all}
+.cl svg{flex:none;color:var(--amber-d)}
+footer .cl svg{color:var(--amber)}
+footer .cl a{padding:2px 0;min-height:32px}
+
+/* footer: contact person blocks */
+.fp{color:#fff;font-weight:600;margin:14px 0 4px}
