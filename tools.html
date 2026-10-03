@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dye Tools | Dye Calculator & Dye Finder | Darshan Dye-Chem</title>
+<meta name="description" content="Free dye calculator and dye finder from Darshan Dye-Chem. Estimate dye quantity, water and cost, and find the right dye family for your material.">
+<meta property="og:title" content="Dye Tools | Dye Calculator & Dye Finder | Darshan Dye-Chem">
+<meta property="og:description" content="Free dye calculator and dye finder from Darshan Dye-Chem. Estimate dye quantity, water and cost, and find the right dye family for your material.">
+<meta property="og:image" content="assets/img/logo-full.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2309090f'/%3E%3Cpath d='M7 6h8c0 4-3 7-8 8z' fill='%233a31c9'/%3E%3Cpath d='M15 6c6 0 10 4 10 9-5 0-10-3-10-9z' fill='%238e2fb0'/%3E%3Cpath d='M7 15c5 0 8 3 8 11H7z' fill='%23c68a22'/%3E%3Cpath d='M25 15c0 6-4 11-10 11 0-6 4-10 10-11z' fill='%2324c498'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site">
+  <div class="topbar"><div class="wrap"><span>Manufacturer &amp; exporter of dyes &middot; Ahmedabad, Gujarat, India</span><span class="hide-sm">GST registered &middot; Wholesale &amp; bulk supply</span></div></div>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="Darshan Dye-Chem home"><img src="assets/img/logo-mark.svg" alt="" width="38" height="38"><span>Darshan<small>Dye Chem</small></span></a>
+    <nav aria-label="Primary"><ul id="menu"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="products.html">Products</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+    <a class="btn btn-amber" href="contact.html">Get a Quote</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Toggle menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero sm" style="background-image:url(assets/img/lab-pipette.jpg);padding:0">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Home</a> / Dye Tools</div>
+    
+    <h1>Plan your dyeing in under a minute</h1>
+    <p>Estimate how much dye your batch needs and find which dye family suits your material. Free to use.</p>
+    <div class="row"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap tools">
+    <div class="tool reveal">
+      <h2>Dye calculator</h2>
+      <p class="sub">Quantity = material weight x shade % / 100. Values are indicative; actual use depends on dye strength and process.</p>
+      <form id="calc" novalidate style="display:block;border:0;padding:0;box-shadow:none">
+        <div class="grid2">
+          <div class="fld"><label for="kg">Material weight (kg)</label><input id="kg" name="kg" type="number" min="0" step="any" inputmode="decimal" value="100"></div>
+          <div class="fld"><label for="shade">Shade depth (% owf)</label><input id="shade" name="shade" type="number" min="0" step="any" inputmode="decimal" value="2"></div>
+          <div class="fld"><label for="lr">Liquor ratio (1 : N)</label><input id="lr" name="lr" type="number" min="0" step="any" inputmode="decimal" value="10"></div>
+          <div class="fld"><label for="batches">Number of batches</label><input id="batches" name="batches" type="number" min="1" step="1" inputmode="numeric" value="1"></div>
+        </div>
+        <div class="fld"><label for="price">Dye price per kg, optional (Rs)</label><input id="price" name="price" type="number" min="0" step="any" inputmode="decimal" placeholder="e.g. 450"></div>
+        <span class="err" id="calcErr" role="alert"></span>
+        <button class="btn btn-amber" type="submit">Calculate</button>
+      </form>
+      <div class="result" id="calcOut" hidden aria-live="polite">
+        <span style="font-size:.8rem;color:var(--on-dark-m);text-transform:uppercase;letter-spacing:.08em">Dye required</span>
+        <div class="big" id="rDye"></div>
+        <div class="rows"><div><span>Total material</span><b id="rFab"></b></div><div><span>Water needed</span><b id="rWater"></b></div><div><span>Estimated dye cost</span><b id="rCost"></b></div></div>
+        <small>Indicative only. Shade, dye strength and substrate change the real figure, so we recommend a sample trial before bulk.</small>
+        <a class="btn btn-amber" id="calcQuote" href="contact.html">Get a quote for this</a>
+      </div>
+    </div>
+
+    <div class="tool reveal">
+      <h2>Dye finder</h2>
+      <p class="sub">Pick your material to see which dye family is commonly used.</p>
+      <form id="find" novalidate onsubmit="return false" style="display:block;border:0;padding:0;box-shadow:none">
+        <div class="fld"><label for="mat">What are you dyeing?</label>
+          <select id="mat" name="mat"><option value="">Select a material</option>
+            <option value="wool">Wool</option><option value="silk">Silk</option><option value="nylon">Nylon</option><option value="leather">Leather</option>
+            <option value="cotton">Cotton</option><option value="viscose">Viscose / rayon</option><option value="paper">Paper</option>
+            <option value="polyester">Polyester</option><option value="acrylic">Acrylic</option></select></div>
+      </form>
+      <div id="matchOut" class="match" hidden aria-live="polite"></div>
+      <p class="sub" style="margin-top:18px;margin-bottom:0">General guidance only. Final choice depends on your process and fastness needs, and our team is happy to advise.</p>
+    </div>
+  </div>
+</section>
+<script src="assets/js/tools.js"></script>
+
+<section class="cta"><div class="wrap reveal">
+  <h2>Need a dye for your process?</h2>
+  <p>Share the shade, quantity and destination. We will come back with pricing and sample options.</p>
+  <a class="btn btn-amber" href="contact.html">Request a quote</a>
+</div></section>
+</main>
+
+<footer>
+  <div class="wrap f-grid">
+    <div><a class="brand" href="index.html"><img src="assets/img/logo-mark.svg" alt="" width="38" height="38"><span>Darshan<small>Dye Chem</small></span></a>
+      <p style="margin-top:16px;max-width:34ch">Acid dyes, direct dyes and specialty colourants, manufactured in Ahmedabad and supplied across India and overseas.</p></div>
+    <div><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="products.html">Products</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Products</h4><ul><li><a href="products.html#acid">Acid Dyes</a></li><li><a href="products.html#direct">Direct Dyes</a></li><li><a href="products.html#other">Other Colourants</a></li><li><a href="tools.html">Dye Tools</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>Darshan Dye-Chem, Ahmedabad, Gujarat, India</li><li>Girish Patel</li><li><a href="#" data-phone>Phone: add in main.js</a></li><li><a href="#" data-mail>Email: add in main.js</a></li></ul></div>
+  </div>
+  <div class="wrap f-bottom"><span>&copy; <span id="yr"></span> Darshan Dye-Chem. All rights reserved.</span><span>GST 24ALMPP2816Q1ZI</span></div>
+</footer>
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+</body>
+</html>
