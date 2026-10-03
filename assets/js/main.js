@@ -78,3 +78,14 @@ if (tline) {
     }), { threshold: .6 }).observe(num);
   }
 }
+
+/* hero slideshow: fades between background images automatically; off for reduced motion */
+(function () {
+  const wrap = $(".hero-slides");
+  if (!wrap || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const slides = $$(".hs", wrap);
+  let i = 0, timer = null;
+  const start = () => { clearInterval(timer); timer = setInterval(() => { i = (i + 1) % slides.length; slides.forEach((s, k) => s.classList.toggle("on", k === i)); }, 5000); };
+  document.addEventListener("visibilitychange", () => document.hidden ? clearInterval(timer) : start());
+  start();
+})();
