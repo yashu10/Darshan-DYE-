@@ -1,6 +1,6 @@
 /* ---- EDIT THESE: your real contact details ---- */
 const CONTACT = {
-  email: "darshandyechemAd@gmail.com",   // used by the enquiry form when no WhatsApp number is set
+  email: "darshandyechem@gmail.com",   // used by the enquiry form when no WhatsApp number is set
   phone: "919327094416"    // international format, digits only
 };
 
