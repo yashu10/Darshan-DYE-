@@ -497,3 +497,52 @@ footer .cl a{padding:2px 0;min-height:32px}
 
 /* footer: contact person blocks */
 .fp{color:#fff;font-weight:600;margin:14px 0 4px}
+
+/* lab photo gallery */
+.lab-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:250px;gap:16px}
+.lab-grid a,.lab-masonry a{position:relative;display:block;border-radius:var(--radius);overflow:hidden;background:#e9eaf0}
+.lab-grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.lab-grid a:hover img,.lab-masonry a:hover img{transform:scale(1.05)}
+.lab-grid a.wide{grid-column:span 2}
+.lab-masonry{column-count:3;column-gap:16px}
+.lab-masonry a{break-inside:avoid;margin-bottom:16px}
+.lab-masonry img{width:100%;height:auto;transition:transform .6s}
+.lab-grid figcaption,.lab-masonry figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 12px;background:linear-gradient(transparent,rgba(9,9,15,.85));color:#fff;font-size:.88rem;font-weight:500;opacity:0;transition:opacity .3s}
+.lab-grid a:hover figcaption,.lab-masonry a:hover figcaption,.lab-grid a:focus-visible figcaption,.lab-masonry a:focus-visible figcaption{opacity:1}
+@media (hover:none){.lab-grid figcaption,.lab-masonry figcaption{opacity:1}}
+dialog.lb2{border:0;padding:0;background:transparent;width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;overflow:hidden}
+dialog.lb2::backdrop{background:rgba(5,5,9,.94)}
+dialog.lb2[open]{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding:56px 10px 16px}
+.lb2 figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0;height:100%;justify-content:center}
+.lb2 img{max-width:100%;max-height:calc(100dvh - 130px);width:auto;height:auto;border-radius:8px;object-fit:contain}
+.lb2 figcaption{color:#fff;font-weight:500;font-size:.95rem;text-align:center}
+.lb2-x{position:absolute;right:14px;top:10px;min-width:44px;min-height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-size:1.6rem;cursor:pointer;line-height:1}
+.lb2-n{min-width:48px;min-height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.08);color:#fff;font-size:1.3rem;cursor:pointer}
+.lb2-x:hover,.lb2-n:hover{background:#fff;color:#09090f}
+@media (max-width:900px){.lab-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}.lab-masonry{column-count:2}}
+@media (max-width:560px){.lab-grid a.wide{grid-column:span 2}dialog.lb2[open]{grid-template-columns:1fr;grid-template-rows:1fr auto;padding:56px 8px 12px}.lb2-n{position:absolute;bottom:14px;z-index:2}.lb2-prev{left:14px}.lb2-next{right:14px}.lb2 figure{grid-row:1}}
+
+/* about: tidy photo collage (aligned edges, no gaps) */
+.lab-collage{display:grid;gap:16px;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px}
+.lab-collage a{position:relative;display:block;border-radius:var(--radius);overflow:hidden;background:#e9eaf0}
+.lab-collage img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.lab-collage a:hover img{transform:scale(1.05)}
+.lab-collage figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 12px;background:linear-gradient(transparent,rgba(9,9,15,.85));color:#fff;font-size:.88rem;font-weight:500;opacity:0;transition:opacity .3s}
+.lab-collage a:hover figcaption,.lab-collage a:focus-visible figcaption{opacity:1}
+@media (hover:none){.lab-collage figcaption{opacity:1}}
+@media (min-width:901px){
+  .lab-collage a:nth-child(3){grid-area:1/1/3/2}
+  .lab-collage a:nth-child(1){grid-area:1/2/3/4}
+  .lab-collage a:nth-child(5){grid-area:1/4/3/5}
+  .lab-collage a:nth-child(2){grid-area:3/1/5/3}
+  .lab-collage a:nth-child(6){grid-area:3/3/5/5}
+  .lab-collage a:nth-child(4){grid-area:5/1/7/2}
+  .lab-collage a:nth-child(7){grid-area:5/2/7/4}
+  .lab-collage a:nth-child(8){grid-area:5/4/6/5}
+  .lab-collage a:nth-child(9){grid-area:6/4/7/5}
+}
+@media (max-width:900px){
+  .lab-collage{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
+  .lab-collage a{grid-column:span 2;aspect-ratio:4/3}
+  .lab-collage a:nth-child(3),.lab-collage a:nth-child(4){grid-column:span 1;aspect-ratio:3/4}
+}
