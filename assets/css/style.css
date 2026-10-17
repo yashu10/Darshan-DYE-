@@ -583,3 +583,7 @@ dialog.lb2[open]{display:grid;grid-template-columns:auto 1fr auto;align-items:ce
 @media (prefers-reduced-motion:reduce){.sh-covers a{transition:none}}
 .sh-c1{z-index:1}
 .sh-c2{z-index:2;margin-left:-3%}
+
+/* enquiry form: hidden spam-trap field and status links */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-msg a{color:var(--navy);font-weight:600;text-decoration:underline}

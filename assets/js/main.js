@@ -1,8 +1,10 @@
 /* ---- EDIT THESE: your real contact details ---- */
 const CONTACT = {
-  email: "darshandyechem@gmail.com",   // used by the enquiry form when no WhatsApp number is set
-  phone: "919327094416"    // international format, digits only
+  phone: "919327094416",                    // WhatsApp number, international format, digits only
+  email: "darshandyechem@gmail.com",        // every website enquiry is emailed here
+  ccEmail: "patelarchit2572000@gmail.com"   // receives a copy of every enquiry
 };
+const ENQUIRY_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT.email}`;
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -26,29 +28,92 @@ $$(".chip").forEach(chip => chip.addEventListener("click", () => {
   $$(".pcard").forEach(c => c.classList.toggle("hide", f !== "all" && c.dataset.c !== f));
 }));
 
-/* enquiry form: validates, then opens WhatsApp or email with the details */
+/* enquiry form: validates, emails the enquiry to the team, then confirms on the page.
+   If sending fails, the visitor gets a WhatsApp link with the enquiry already typed in. */
 const form = $("#enq");
 if (form) {
   const out = $("#formMsg");
-  const pre = new URLSearchParams(location.search).get("product");
-  const qs = new URLSearchParams(location.search);
-  if (pre && form.product) form.product.value = pre;
-  if (qs.get("msg") && form.msg) form.msg.value = qs.get("msg");
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    let ok = true;
-    [["name", "Please enter your name."], ["email", "Please enter a valid email, for example name@company.com."], ["msg", "Please describe what you need."]].forEach(([id, m]) => {
-      const f = form[id], err = $("#e-" + id);
-      const bad = !f.value.trim() || (id === "email" && !f.validity.valid);
-      err.textContent = bad ? m : ""; f.setAttribute("aria-invalid", bad); if (bad) ok = false;
+  const submitBtn = $('button[type="submit"]', form);
+  const params = new URLSearchParams(location.search);
+  if (params.get("product") && form.product) form.product.value = params.get("product");
+  if (params.get("msg") && form.msg) form.msg.value = params.get("msg");
+
+  const REQUIRED = [
+    ["name", "Please enter your name."],
+    ["email", "Please enter a valid email, for example name@company.com."],
+    ["msg", "Please describe what you need."]
+  ];
+
+  /* shows an inline error per field; focuses the first invalid one */
+  const validate = () => {
+    let firstInvalid = null;
+    REQUIRED.forEach(([id, message]) => {
+      const field = form[id];
+      const invalid = !field.value.trim() || (id === "email" && !field.validity.valid);
+      $("#e-" + id).textContent = invalid ? message : "";
+      field.setAttribute("aria-invalid", invalid);
+      if (invalid && !firstInvalid) firstInvalid = field;
     });
-    if (!ok) { $('[aria-invalid="true"]', form).focus(); return; }
+    if (firstInvalid) firstInvalid.focus();
+    return !firstInvalid;
+  };
+
+  const whatsappLink = text => {
+    const a = document.createElement("a");
+    a.href = `https://wa.me/${CONTACT.phone}?text=${encodeURIComponent(text)}`;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.textContent = "Chat on WhatsApp";
+    return a;
+  };
+  const setStatus = (message, link) => { out.textContent = message; if (link) out.append(" ", link); };
+
+  /* resolves true only when the email service confirms delivery */
+  const sendEnquiry = async d => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 15000);
+    try {
+      const res = await fetch(ENQUIRY_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: d.name, company: d.company, email: d.email, phone: d.phone, product: d.product, message: d.msg,
+          _subject: "New dye enquiry from the Darshan Dye-Chem website",
+          _cc: CONTACT.ccEmail,
+          _template: "table",
+          _captcha: "false"
+        }),
+        signal: controller.signal
+      });
+      const data = await res.json().catch(() => ({}));
+      return res.ok && String(data.success) === "true";
+    } catch {
+      return false;
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (!validate()) return;
     const d = Object.fromEntries(new FormData(form));
+    if (d._honey) return; // hidden spam-trap field was filled in: a bot, not a visitor
+
     const text = `Enquiry for Darshan Dye-Chem\nName: ${d.name}\nCompany: ${d.company}\nEmail: ${d.email}\nPhone: ${d.phone}\nProduct: ${d.product}\nRequirement: ${d.msg}`;
-    if (CONTACT.phone) window.open("https://wa.me/" + CONTACT.phone + "?text=" + encodeURIComponent(text), "_blank", "noopener");
-    else if (CONTACT.email) location.href = "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent("Dye enquiry") + "&body=" + encodeURIComponent(text);
-    else { out.textContent = "The form works, but no phone or email is set yet. Add them in assets/js/main.js (CONTACT block)."; return; }
-    out.textContent = "Thank you. Your message is ready to send in the app that just opened.";
+    const label = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+    const sent = await sendEnquiry(d);
+    submitBtn.disabled = false;
+    submitBtn.textContent = label;
+
+    if (sent) {
+      form.reset();
+      setStatus("Thank you. Your enquiry has been sent and our team will contact you soon.", whatsappLink(text));
+    } else {
+      setStatus("Sorry, we could not send your enquiry. Please send it on WhatsApp or call us.", whatsappLink(text));
+    }
   });
 }
 
