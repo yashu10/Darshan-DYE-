@@ -114,10 +114,10 @@
           <tr><th scope="row">Milling</th><td>${dash(d.m)}</td><td>${bar(d.m, 5)}</td></tr>
         </tbody>
       </table>
-      <p class="sc-note">Ratings are as printed on our shade card (page ${d.page}). Colours are scanned and may differ slightly on screen. Request a sample to confirm the shade.</p>
+      <p class="sc-note">Ratings are as printed on our shade card (PDF page ${d.page}). Colours are scanned and may differ slightly on screen. Request a sample to confirm the shade.</p>
       <div class="dlg-act">
         <a class="btn btn-amber" href="contact.html?msg=${encodeURIComponent(msg)}">Request price &amp; sample</a>
-        <a class="btn btn-navy" href="assets/downloads/darshan-${d.fam}-dyes-shade-card.pdf#page=${d.page + 1}" target="_blank" rel="noopener">See on shade card</a>
+        <a class="btn btn-navy" href="assets/downloads/darshan-${d.fam}-dyes-shade-card.pdf#page=${d.page}" target="_blank" rel="noopener">See on shade card</a>
       </div>`;
     if (!dlg.open) dlg.showModal();
   }

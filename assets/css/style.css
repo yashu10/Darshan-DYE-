@@ -546,3 +546,40 @@ dialog.lb2[open]{display:grid;grid-template-columns:auto 1fr auto;align-items:ce
   .lab-collage a{grid-column:span 2;aspect-ratio:4/3}
   .lab-collage a:nth-child(3),.lab-collage a:nth-child(4){grid-column:span 1;aspect-ratio:3/4}
 }
+
+/* shade card download cards: show the whole cover, no cropping */
+.dl-grid{max-width:1120px;gap:28px}
+.dl{grid-template-columns:230px 1fr;align-items:center;background:#fff}
+.dl img{width:100%;height:auto;aspect-ratio:1189/1683;object-fit:contain;align-self:center;background:#f4f1ec;border-right:1px solid var(--line)}
+.dl-b{padding:24px 26px}
+@media (max-width:900px){.dl-grid{grid-template-columns:1fr;max-width:620px}}
+@media (max-width:480px){
+  .dl{grid-template-columns:1fr}
+  .dl img{height:auto;aspect-ratio:1189/1683;max-width:240px;width:100%;margin:20px auto 0;border:1px solid var(--line);border-radius:8px;object-position:center}
+}
+.dl{grid-template-columns:210px 1fr}
+.dl-b{padding:22px 22px}
+.dl-act{flex-wrap:nowrap;gap:8px}
+.dl-act .btn{padding:0 14px;white-space:nowrap}
+@media (max-width:480px){.dl-act{flex-wrap:wrap}}
+
+/* home: shade cards teaser */
+.sh-home .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,80px);align-items:center}
+.sh-text h2{font-size:clamp(1.8rem,3.6vw,2.7rem);margin:8px 0 16px}
+.sh-text p{color:var(--on-dark-m);margin-bottom:22px;max-width:52ch}
+.sh-facts{list-style:none;display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.sh-facts li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:12px 18px;min-width:104px}
+.sh-facts b{display:block;font-size:1.7rem;line-height:1.1;color:var(--amber)}
+.sh-facts span{font-size:.8rem;color:var(--on-dark-m)}
+.sh-act{display:flex;gap:10px;flex-wrap:wrap}
+.sh-covers{position:relative;display:flex;justify-content:center;align-items:flex-start;padding:10px 0 30px}
+.sh-covers a{display:block;width:min(46%,240px);border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);transition:transform .35s;background:#fff}
+.sh-covers img{width:100%;height:auto;display:block}
+.sh-c1{transform:rotate(-4deg) translateY(0);z-index:1}
+.sh-c2{transform:rotate(4deg) translateY(34px);margin-left:-6%}
+.sh-c1:hover{transform:rotate(-2deg) translateY(-8px)}
+.sh-c2:hover{transform:rotate(2deg) translateY(26px)}
+@media (max-width:900px){.sh-home .wrap{grid-template-columns:1fr}.sh-covers{order:-1}}
+@media (prefers-reduced-motion:reduce){.sh-covers a{transition:none}}
+.sh-c1{z-index:1}
+.sh-c2{z-index:2;margin-left:-3%}
