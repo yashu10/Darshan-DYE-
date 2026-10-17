@@ -74,13 +74,25 @@ if (tline) {
   }
 }
 
-/* hero slideshow: fades between background images automatically; off for reduced motion */
+/* hero slideshow: fades between background images automatically; off for reduced motion.
+   Slides after the first keep their image in data-bg and load once the page has finished loading. */
 (function () {
   const wrap = $(".hero-slides");
   if (!wrap || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const slides = $$(".hs", wrap);
-  let i = 0, timer = null;
-  const start = () => { clearInterval(timer); timer = setInterval(() => { i = (i + 1) % slides.length; slides.forEach((s, k) => s.classList.toggle("on", k === i)); }, 5000); };
+  const INTERVAL = 5000;
+  let current = 0, timer = null;
+
+  const loadImages = () => slides.forEach(s => {
+    if (s.dataset.bg) { s.style.backgroundImage = `url(${s.dataset.bg})`; delete s.dataset.bg; }
+  });
+  const show = n => {
+    current = n % slides.length;
+    slides.forEach((s, k) => s.classList.toggle("on", k === current));
+  };
+  const start = () => { clearInterval(timer); timer = setInterval(() => show(current + 1), INTERVAL); };
+
+  if (document.readyState === "complete") loadImages(); else addEventListener("load", loadImages, { once: true });
   document.addEventListener("visibilitychange", () => document.hidden ? clearInterval(timer) : start());
   start();
 })();
