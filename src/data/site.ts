@@ -29,14 +29,14 @@ export const SITE = {
   indiamartUrl: "https://www.indiamart.com/darshan-dye-chem/",
   /** WhatsApp number, international format without "+". */
   whatsappNumber: "919327094416",
-  /** Enquiries from the website form are emailed here, with a copy to `enquiryCc`. */
+  /** FormSubmit fallback only: recipient, with a copy to `enquiryCc`. Web3Forms sends to yashrp018@gmail.com. */
   enquiryRecipient: "darshandyechem@gmail.com",
   enquiryCc: "patelarchit2572000@gmail.com",
   /**
    * Web3Forms access key (web3forms.com, free). Enquiries go to the email the key was made with.
    * Public by design, safe to keep in code. Leave empty to fall back to FormSubmit.
    */
-  web3formsKey: "",
+  web3formsKey: "a57f40a8-89ff-4b12-9d11-7caf97b26b46",
   address: {
     street: "I/149A, Vinoba Bhave Nagar, Dibiyapur, Phase 2, Vatva GIDC",
     locality: "Ahmedabad",
