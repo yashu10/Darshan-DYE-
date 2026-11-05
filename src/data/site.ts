@@ -32,6 +32,11 @@ export const SITE = {
   /** Enquiries from the website form are emailed here, with a copy to `enquiryCc`. */
   enquiryRecipient: "darshandyechem@gmail.com",
   enquiryCc: "patelarchit2572000@gmail.com",
+  /**
+   * Web3Forms access key (web3forms.com, free). Enquiries go to the email the key was made with.
+   * Public by design, safe to keep in code. Leave empty to fall back to FormSubmit.
+   */
+  web3formsKey: "",
   address: {
     street: "I/149A, Vinoba Bhave Nagar, Dibiyapur, Phase 2, Vatva GIDC",
     locality: "Ahmedabad",

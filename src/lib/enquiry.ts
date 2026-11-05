@@ -9,25 +9,33 @@ export interface EnquiryFields {
   message: string;
 }
 
-/** FormSubmit (formsubmit.co) emails the enquiry; no server of our own is needed. */
-const ENDPOINT = `https://formsubmit.co/ajax/${SITE.enquiryRecipient}`;
 const TIMEOUT_MS = 15000;
+
+/** Web3Forms is used when a key is set; FormSubmit (formsubmit.co) is the fallback. No server of our own is needed. */
+function request(fields: EnquiryFields): { url: string; body: Record<string, unknown> } {
+  const subject = `New dye enquiry from the ${SITE.name} website`;
+  if (SITE.web3formsKey) {
+    return {
+      url: "https://api.web3forms.com/submit",
+      body: { access_key: SITE.web3formsKey, subject, from_name: `${SITE.name} website`, replyto: fields.email, ...fields }
+    };
+  }
+  return {
+    url: `https://formsubmit.co/ajax/${SITE.enquiryRecipient}`,
+    body: { ...fields, _subject: subject, _cc: SITE.enquiryCc, _template: "table", _captcha: "false" }
+  };
+}
 
 /** Resolves true only when the email service confirms delivery. */
 export async function sendEnquiry(fields: EnquiryFields): Promise<boolean> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const { url, body } = request(fields);
   try {
-    const response = await fetch(ENDPOINT, {
+    const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        ...fields,
-        _subject: `New dye enquiry from the ${SITE.name} website`,
-        _cc: SITE.enquiryCc,
-        _template: "table",
-        _captcha: "false"
-      }),
+      body: JSON.stringify(body),
       signal: controller.signal
     });
     const data: { success?: unknown } = await response.json().catch(() => ({}));
