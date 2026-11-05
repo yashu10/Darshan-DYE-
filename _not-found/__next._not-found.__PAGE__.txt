@@ -1,0 +1,28 @@
+2:"$Sreact.fragment"
+3:I[7121,[],""]
+4:I[4581,[],""]
+9:"static/chunks/500-fc3b64d9ff4a32a7.js"
+a:"static/chunks/437-0f1f00a941b2a3b0.js"
+b:"static/chunks/app/page-c8ef78aa47d528e4.js"
+c:I[8500,["500","$9","437","$a","974","$b"],""]
+d:I[484,[],"OutletBoundary"]
+e:"$Sreact.suspense"
+11:"ViewportBoundary"
+12:I[484,[],"$11"]
+13:"MetadataBoundary"
+14:I[484,[],"$13"]
+15:I[6869,[],"IconMark"]
+6:X
+6:C
+7:X
+8:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[["$","section",null,{"className":"hero sm","style":{"backgroundImage":"url(/assets/img/dye-indigo.jpg)"},"children":[null,["$","div",null,{"className":"wrap","children":[null,null,["$","h1",null,{"children":"Page not found"}],["$","p",null,{"children":"The page you are looking for does not exist or has moved. Try the home page or browse our dyes."}],["$","div",null,{"className":"row","children":[["$","$Lc",null,{"className":"btn btn-amber","href":"/","children":"Back to home"}],["$","$Lc",null,{"className":"btn btn-outline","href":"/products/","children":"View products"}]]}]]}]]}],null,["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]]}],"p":"$@10","v":null,"s":"$7"}}]]
+1:[["children",{"s":"_not-found","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}]}]]}],"p":"$@5","v":"$6","s":"$7"},"c":"$Q8"}]]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Page not found | Darshan Dye-Chem"}],["$","meta","1",{"name":"description","content":"Darshan Dye-Chem is an Ahmedabad-based manufacturer and exporter of acid dyes, direct dyes and specialty colourants."}],["$","meta","2",{"name":"application-name","content":"Darshan Dye-Chem"}],["$","link","3",{"rel":"author","href":"https://darshandyechem.com"}],["$","meta","4",{"name":"author","content":"Darshan Dye-Chem"}],["$","link","5",{"rel":"manifest","href":"/manifest.webmanifest"}],["$","meta","6",{"name":"creator","content":"Darshan Dye-Chem"}],["$","meta","7",{"name":"publisher","content":"Darshan Dye-Chem"}],["$","meta","8",{"name":"robots","content":"noindex, nofollow"}],["$","meta","9",{"name":"category","content":"business"}],["$","meta","10",{"name":"format-detection","content":"telephone=no, address=no, email=no"}],["$","link","11",{"rel":"icon","href":"/icon.svg?8e2517e5267ce26e","type":"image/svg+xml","sizes":"any"}],["$","link","12",{"rel":"apple-touch-icon","href":"/apple-icon.png?4125810374bae9e0","type":"image/png","sizes":"180x180"}],["$","$L15","13",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@16","v":null,"s":"$7"}},"a":"$@17","u":"$@18","b":"ZBq8K2f8kPO6Tq4kx_V8-"}
+f:null
+18:true
+7:300
+7:C
+17:0
+5:"$undefined"
+16:"$undefined"
+10:"$undefined"

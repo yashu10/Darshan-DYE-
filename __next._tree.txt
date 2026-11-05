@@ -1,0 +1,10 @@
+:HL["/_next/static/media/0484562807a97172-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/06084a2f60b23053-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/7fdeec0c074ef54a-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/8888a3826f4a3af4-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/b957ea75a84b6ea7-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/eafabf029ad39a43-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/a5291f2f5c75fcb0.css","style"]
+:HL["/assets/img/dye-yarns.jpg","image",{"fetchPriority":"high"}]
+1:[["children",{"s":"__PAGE__","h":128}]]
+0:{"b":"ZBq8K2f8kPO6Tq4kx_V8-","t":{"t":{"s":"","h":16,"c":"$Q1"}}}

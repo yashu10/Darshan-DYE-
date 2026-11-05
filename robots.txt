@@ -1,0 +1,25 @@
+User-Agent: *
+Allow: /
+
+User-Agent: Googlebot
+User-Agent: Google-Extended
+User-Agent: Bingbot
+User-Agent: Applebot
+User-Agent: Applebot-Extended
+User-Agent: DuckAssistBot
+User-Agent: GPTBot
+User-Agent: OAI-SearchBot
+User-Agent: ChatGPT-User
+User-Agent: ClaudeBot
+User-Agent: Claude-SearchBot
+User-Agent: Claude-User
+User-Agent: anthropic-ai
+User-Agent: PerplexityBot
+User-Agent: Perplexity-User
+User-Agent: Amazonbot
+User-Agent: Meta-ExternalAgent
+User-Agent: CCBot
+User-Agent: cohere-ai
+Allow: /
+
+Sitemap: https://darshandyechem.com/sitemap.xml
