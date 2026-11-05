@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { PAGE_SEO } from "@/data/seo";
 import { SITE } from "@/data/site";
 import "./globals.css";
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <main id="main">{children}</main>
         <SiteFooter />
         <RevealOnScroll />
+        <WhatsAppButton />
       </body>
     </html>
   );

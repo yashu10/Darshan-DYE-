@@ -88,3 +88,10 @@ export const ADDRESS_LINES: readonly string[] = [
   "Phase 2, Vatva GIDC, Ahmedabad,",
   "Gujarat 382445"
 ];
+
+/** Floating WhatsApp button: opens a chat with Archit Patel, who handles enquiries. */
+export const WHATSAPP_CHAT = {
+  number: "919574068089",
+  label: "Chat with Archit Patel on WhatsApp",
+  message: "Hello Darshan Dye-Chem, I would like to enquire about your dyes."
+} as const;
