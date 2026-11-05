@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "preview": "npx --yes serve@latest out -l 3000"
