@@ -1,0 +1,30 @@
+{
+  "name": "darshan-dye-chem-website",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Website of Darshan Dye-Chem, acid and direct dye manufacturer in Vatva GIDC, Ahmedabad. Next.js static export.",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "preview": "npx --yes serve@latest out -l 3000"
+  },
+  "dependencies": {
+    "next": "16.4.5",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.4.5",
+    "sharp": "^0.34.0",
+    "typescript": "~5.9.3"
+  }
+}

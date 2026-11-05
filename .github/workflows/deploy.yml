@@ -1,0 +1,31 @@
+name: Build and publish static site
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://darshandyechem.com
+      # Publishes the exported site to a "production" branch; point Hostinger Git deploy at it.
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: production
+          publish_dir: out
+          force_orphan: true
